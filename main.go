@@ -1,10 +1,18 @@
 package main
 
 import (
+	"encoding/json"
 	"net/http"
 	"flag"
 	"fmt"
+	"time"
 )
+
+type Memo struct {
+	Title     string    `json:"title"`
+	Body      string    `json:"body"`
+	CreatedAt time.Time `json:"createdAt"`
+}
 
 func main() {
 	port := *flag.String("port", "7777", "Serve on port")
@@ -16,7 +24,13 @@ func main() {
 }
 
 func showMemo(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Memo"))
+	peter := Memo{
+		Title    : "John",
+		Body     : "Doe",
+		CreatedAt: time.Now(),
+	}
+
+	json.NewEncoder(w).Encode(peter)
 }
 
 func showMemos(w http.ResponseWriter, r *http.Request) {
