@@ -184,8 +184,9 @@
 									"});",
 									"",
 									"pm.test(\"response body has json with request body\", function () {",
-									"    pm.response.to.have.jsonBody('data', ",
-									"        'Hi world.');",
+									"    pm.response.to.have.jsonBody('data', 'Hi world.');",
+									"    pm.response.to.have.jsonBody('data', 'Hi world.');",
+									"    ",
 									"});"
 								],
 								"type": "text/javascript"
